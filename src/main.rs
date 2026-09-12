@@ -1,7 +1,9 @@
 use axum::{
-    Json, Router, debug_handler, routing::get
+     Router, routing::get
 };
-use uuid::Uuid;
+
+mod vehicule;
+use vehicule::{get_vehicules_hundler, vehicule_post_handler};
 
 #[tokio::main]
 async fn main() {
@@ -20,26 +22,3 @@ async fn main() {
         .unwrap() 
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
-struct Vehicule {
-    manufacturer : String,
-    model: String,
-    year: u16,
-    id: String,
-}
-
-#[debug_handler]
-async fn get_vehicules_hundler() -> Json<Vehicule> {
-    println!("Caller retrieved vehicule data from Axum");
-    Json::from(
-        Vehicule{
-            manufacturer: "Toyota".to_string(),
-            model: "Corolla".to_string(),
-            year: 2020,
-            id: Uuid::new_v4().to_string(),
-        }
-    )
-}
-
-async fn vehicule_post_handler() {
-}
