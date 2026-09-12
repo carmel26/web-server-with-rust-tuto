@@ -1,0 +1,10 @@
+[package]
+name = "subject-management-axum"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = { version = "0.8.9", features = ["http2", "macros", "ws"] }
+serde = { version = "1.0.229", features = ["derive"] }
+tokio = { version = "1.53.1", features = ["full"] }
+uuid = { version = "1.26.1", features = ["v4"] }
